@@ -1,12 +1,12 @@
 import React from 'react';
-import Loader from './Loader/Loader';
-import Searchbar from './Searchbar/Searchbar';
-import PixabayApi from 'API/pixabayApi';
-import ImageGallery from './ImageGallery/ImageGallery';
-import Button from './Button/Button';
+import Loader from '../Loader/Loader';
+import Searchbar from '../Searchbar/Searchbar';
+import PixabayApi from '../../API/pixabayApi';
+import ImageGallery from './ImageGallery';
+import Button from '../Button/Button';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Modal from './Modal/Modal';
+import Modal from '../Modal/Modal';
 import styles from './styles.module.css';
 const pixabayApi = new PixabayApi();
 
