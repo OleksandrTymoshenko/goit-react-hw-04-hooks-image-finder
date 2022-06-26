@@ -1,33 +1,37 @@
-import PropTypes from 'prop-types';
+npm run deployimport PropTypes from 'prop-types';
 import React from 'react';
 import styles from './styles.module.css';
 import { createPortal } from 'react-dom';
+import { useEffect } from 'react';
+
 
 const modalRoot = document.querySelector('#modal-root');
 
-class Modal extends React.Component {
-  componentDidMount() {
-    window.addEventListener('keydown', this.handleClose);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleClose);
-  }
-
-  handleClose = e => {
-    if (e.code === 'Escape') {
-      this.props.onClose();
+function Modal({ largeImage, onClose }) {
+   
+  const handleClose = (e) => {
+    console.log(e.code)
+    if (e.key === 'q') {
+      onClose();
     }
   };
+  
+  useEffect(() => {
+    window.addEventListener('keydown', handleClose);
+    return () => {
+      window.removeEventListener('keydown', handleClose);
+    }
+  }, [])
 
-  render() {
+
+
     return createPortal(
       <div className={styles.Overlay}>
-        <img className={styles.Modal} src={this.props.largeImage} alt="" />
+        <img className={styles.Modal} src={largeImage} width="500"  alt="Pages" />
       </div>,
       modalRoot
     );
-  }
+  
 }
 
 Modal.propTypes = {
